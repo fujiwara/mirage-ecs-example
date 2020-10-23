@@ -44,7 +44,7 @@ No problem, you can deploy your service later:
 
 ## Create test environment
 
-```
+```console
 $ copilot env init --name test --app mirage-ecs-example
 Would you like to use the default configuration for a new environment?
     - A new VPC with 2 AZs, 2 public subnets and 2 private subnets
@@ -84,7 +84,7 @@ variables: # Pass environment variables as key value pairs.
 - CLUSTER: ECS Cluster name
 - SUBNET_1, SUBNET_2: VPC Subnet ID (copilot-mirage-ecs-example-test-pub* must be public subnet)
 - SECURITY_GROUP: Security Group ID (mirage-ecs-example-test-EnvironmentSecurityGroup-*)
-- DEFAULT_TASKDEF: Task definition ARN to be launched by mirage-ecs ([taskdef.json](taskdef.json)]
+- DEFAULT_TASKDEF: Task definition ARN to be launched by mirage-ecs. e.g. [taskdef.json](taskdef.json)
 - DOMAIN: custom domain name
 
 ## XXX: Customize IAM Role and Route53 by manually...
@@ -116,5 +116,8 @@ https://mirage.test.mirage-ecs-example.test.example.com
 ![](mirage-ecs-3.png)
 
 ![](mirage-ecs-4.png)
+
+
+https://foo.test.mirage-ecs-example.test.example.com
 
 ![](mirage-ecs-5.png)
