@@ -1,0 +1,43 @@
+host:
+  # web api host
+  # you can use API and Web interface through this host
+  # webapi: docker.dev.example.net
+  webapi: mirage.test.mirage-ecs-example.test.kayac.in
+
+listen:
+  # listen address
+  # default is only listen from localhost
+  foreign_address: 0.0.0.0
+
+  # listen port and reverse proxy port
+  http:
+    - listen: 80
+      target: 80
+
+storage:
+  htmldir: ./html
+
+parameters:
+  - name: env
+    env: MIRAGE_ENV
+    rule: ""
+    required: true
+  # add your custom parameters here!
+  # name is parameter name (passed by HTTP parameter)
+  # env is environment variable for docker container
+  # rule is constraint of value using regexp.
+  # required means required or optional parameter (boolean value)
+
+ecs:
+  region: ap-northeast-1
+  cluster: mirage-ecs-example-test-Cluster-aj2rfPwjQkmW
+  launch_type: FARGATE
+  network_configuration:
+    awsvpc_configuration:
+      subnets:
+        - '{{ must_env "SUBNET_1" }}'
+        - '{{ must_env "SUBNET_2" }}'
+      security_groups:
+        - '{{ must_env "SECURITY_GROUP" }}'
+      assign_public_ip: ENABLED
+  default_task_definition: '{{ must_env "DEFAULT_TASKDEF" }}'
