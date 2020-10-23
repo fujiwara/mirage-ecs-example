@@ -2,7 +2,8 @@ host:
   # web api host
   # you can use API and Web interface through this host
   # webapi: docker.dev.example.net
-  webapi: mirage.test.mirage-ecs-example.test.kayac.in
+  webapi: 'mirage.{{ must_env "DOMAIN" }}'
+  reverse_proxy_suffix: '.{{ must_env "DOMAIN" }}'
 
 listen:
   # listen address
