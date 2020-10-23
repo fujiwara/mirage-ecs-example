@@ -23,6 +23,10 @@ parameters:
     env: MIRAGE_ENV
     rule: ""
     required: true
+  - name: branch
+    env: BRANCH
+    rule: ""
+    required: false
   # add your custom parameters here!
   # name is parameter name (passed by HTTP parameter)
   # env is environment variable for docker container
@@ -31,7 +35,7 @@ parameters:
 
 ecs:
   region: ap-northeast-1
-  cluster: mirage-ecs-example-test-Cluster-aj2rfPwjQkmW
+  cluster: '{{ must_env "CLUSTER" }}'
   launch_type: FARGATE
   network_configuration:
     awsvpc_configuration:
